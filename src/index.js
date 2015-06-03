@@ -1,35 +1,8 @@
 exports.ActionMethods = require('./ActionMethods');
 
-exports.ListenerMethods = require('./ListenerMethods');
-
 exports.PublisherMethods = require('./PublisherMethods');
 
-exports.StoreMethods = require('./StoreMethods');
-
 exports.createAction = require('./createAction');
-
-exports.createStore = require('./createStore');
-
-exports.connect = require('./connect');
-
-exports.connectFilter = require('./connectFilter');
-
-exports.ListenerMixin = require('./ListenerMixin');
-
-exports.listenTo = require('./listenTo');
-
-exports.listenToMany = require('./listenToMany');
-
-
-var maker = require('./joins').staticJoinCreator;
-
-exports.joinTrailing = exports.all = maker("last"); // Reflux.all alias for backward compatibility
-
-exports.joinLeading = maker("first");
-
-exports.joinStrict = maker("strict");
-
-exports.joinConcat = maker("all");
 
 var _ = require('./utils');
 

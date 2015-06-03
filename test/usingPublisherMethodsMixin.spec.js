@@ -2,8 +2,7 @@ var chai = require('chai'),
     assert = chai.assert,
     Reflux = require('../src'),
     Q = require('q'),
-    sinon = require('sinon'),
-    util = require('util');
+    sinon = require('sinon');
 
 chai.use(require('chai-as-promised'));
 
@@ -351,61 +350,6 @@ describe("using the publisher methods mixin",function(){
             var promise = pub.triggerPromise.call(context);
 
             assert(promise instanceof Promise);
-        });
-
-        it("should resolve when completed",function(){
-            var action = Reflux.createAction({ asyncResult: true });
-
-            Reflux.createStore({
-                init: function() {
-                    this.listenTo(action, this.onAction);
-                },
-                onAction: function(verb, noun) {
-                    setTimeout(function() {
-                        action.completed(util.format('%s %s completed', verb, noun));
-                    }, 10);
-                },
-            });
-
-            var promise = action.triggerPromise('do', 'something');
-
-            return assert.becomes(promise, 'do something completed');
-        });
-
-        it("should reject when failed",function(){
-            var action = Reflux.createAction({ asyncResult: true });
-
-            Reflux.createStore({
-                init: function() {
-                    this.listenTo(action, this.onAction);
-                },
-                onAction: function(verb, noun) {
-                    setTimeout(function() {
-                        action.failed(util.format('%s %s faiiled', verb, noun));
-                    }, 10);
-                },
-            });
-
-            var promise = action.triggerPromise('do', 'something');
-
-            return assert.isRejected(promise, 'do something failed');
-        });
-
-        it("should resolve with the promised result",function(){
-            var makePancakes = Reflux.createAction({ asyncResult: true });
-            makePancakes.listenAndPromise(function (flour, milk, egg) {
-              return Q.promise(function(resolve) {
-                setTimeout(function(){
-                  resolve(flour + milk + egg);
-                }, 200);
-              });
-            });
-
-            makePancakes.triggerPromise(2,1,1);
-
-            var morePancakes = makePancakes.triggerPromise(4,2,1);
-
-            return assert.becomes(morePancakes, 7, 'became a different result');
         });
     });
 });

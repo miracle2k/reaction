@@ -1,7 +1,7 @@
 {
-  "name": "reflux",
+  "name": "reaction",
   "version": "0.2.7",
-  "description": "A simple library for uni-directional dataflow application architecture inspired by ReactJS Flux",
+  "description": "The action system from reflux.js",
   "main": "index.js",
   "scripts": {
     "test": "grunt test",
@@ -12,11 +12,12 @@
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-    "url": "http://github.com/spoike/reflux.git"
+    "url": "http://github.com/miracle2k/reaction.git"
   },
   "keywords": [
     "react",
-    "flux"
+    "flux",
+    "reflux"
   ],
   "dependencies": {
     "eventemitter3": "^0.1.2",

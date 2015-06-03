@@ -18,16 +18,4 @@ describe('with the keep reset', function() {
             assert.equal(Reflux.__keep.createdActions[0], action);
         });
     });
-
-    describe('when a store is created', function() {
-        var store;
-
-        beforeEach(function () {
-            store = Reflux.createStore({ init: function() { /* no-op */} });
-        });
-
-        it('should be in the keep', function() {
-            assert.equal(Reflux.__keep.createdStores[0], store);
-        });
-    });
 });
